@@ -1,0 +1,29 @@
+{
+    "name": "Python, PostgreSQL, Jupyter Dev Container",
+    "dockerComposeFile": [
+      "docker-compose.yml"
+    ],
+    "service": "python",
+    "workspaceFolder": "/workspace",
+    "extensions": [
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "ms-toolsai.jupyter",
+      "davidanson.vscode-markdownlint",
+      "ms-vscode-remote.remote-containers",
+      "ms-azuretools.vscode-docker"
+    ],
+    "settings": {
+      "python.pythonPath": "/usr/local/bin/python"
+    },
+    "postCreateCommand": "pip install -r requirements.txt",
+    "forwardPorts": [
+      8888,
+      5432
+    ],
+    "remoteUser": "root",
+    "mounts": [
+      "source=${localWorkspaceFolder},target=/workspace,type=bind"
+    ]
+  }
+  

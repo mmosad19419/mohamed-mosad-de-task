@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # Python service
+  python:
+    image: python:3.8-slim
+    container_name: python-dev
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    environment:
+      - PYTHONUNBUFFERED=1  # To avoid buffering of stdout/stderr [Learn]
+    command: tail -f /dev/null
+    ports:
+      - "8888:8888"
+    depends_on:
+      - postgres # Ensure Postgres database service is ready before starting Python
+
+  # PostgreSQL database service
+  postgres:
+    image: postgres:13
+    container_name: postgres-dev
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  # Jupyter Notebook servic
+  jupyter:
+    image: jupyter/scipy-notebook:python-3.8
+    container_name: jupyter-dev
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    ports:
+      - "8889:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    depends_on:
+      - python  # Ensure Python is ready before starting Jupyter
+
+# Volumes for persistent data
+volumes: #[Learn]
+  postgres-data:
+    driver: local

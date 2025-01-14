@@ -1,0 +1,6 @@
+{"API": {
+    "NYT_API_ENDPOINT": "https://api.nytimes.com/svc/books/v3/lists/overview.json",
+    "NYT_BOOKS_API_KEY": "uXunYAlGg7Bp446vfkb2dU2iMCTGvZXo",
+    "NYT_BOOKS_API_SECRET": "2f6wNv3eXA3GYWM9"
+    }
+}
