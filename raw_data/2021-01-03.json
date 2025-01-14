@@ -1,0 +1,91 @@
+{"status": "OK", 
+    "copyright": "Copyright (c) 2025 The New York Times Company.  All Rights Reserved.", 
+    "num_results": 90, 
+    "results": {
+            "bestsellers_date": "2020-12-19", 
+            "published_date": "2021-01-03", 
+            "published_date_description": "", 
+            "previous_published_date": "2020-12-27", 
+            "next_published_date": "2021-01-10", 
+            "lists": [
+                        {"list_id": 704, 
+                        "list_name": "Combined Print and E-Book Fiction", 
+                        "list_name_encoded": "combined-print-and-e-book-fiction", 
+                        "display_name": "Combined Print & E-Book Fiction", 
+                        "updated": "WEEKLY", 
+                        "list_image": "https://storage.googleapis.com/du-prd/books/images/9780385545969.jpg",
+                        "list_image_width": 329, "list_image_height": 500, 
+                        "books": [
+                                    {
+                                        "age_group": "",
+                                        "amazon_product_url": "https://www.amazon.com/dp/0385545967?tag=thenewyorktim-20", 
+                                        "article_chapter_link": "", 
+                                        "author": "John Grisham", 
+                                        "book_image": "https://storage.googleapis.com/du-prd/books/images/9780385545969.jpg", 
+                                        "book_image_width": 329, 
+                                        "book_image_height": 500, 
+                                        "book_review_link": "", 
+                                        "contributor": "by John Grisham", 
+                                        "contributor_note": "", 
+                                        "created_date": "2020-12-23 23:02:09", 
+                                        "description": "The third book in the Jake Brigance series. A 16-year-old is accused of killing a deputy in Clanton, Miss., in 1990.", 
+                                        "first_chapter_link": "", 
+                                        "price": "0.00", 
+                                        "primary_isbn10": "0385545967", 
+                                        "primary_isbn13": "9780385545969", 
+                                        "book_uri": "nyt://book/33a48cf6-d7f3-5113-aa1e-6adcbb3853c3", 
+                                        "publisher": "Doubleday", 
+                                        "rank": 1, 
+                                        "rank_last_week": 2,
+                                        "sunday_review_link": "", 
+                                        "title": "A TIME FOR MERCY", 
+                                        "updated_date": "2020-12-23 23:02:09", 
+                                        "weeks_on_list": 10, 
+                                        "buy_links": [
+                                                        {
+                                                            "name": "Amazon", 
+                                                            "url": "https://www.amazon.com/dp/0385545967?tag=thenewyorktim-20"
+                                                        }, 
+                                                        {
+                                                            "name": "Apple Books", 
+                                                            "url": "https://goto.applebooks.apple/9780385545969?at=10lIEQ"
+                                                        }, 
+                                                        {
+                                                            "name": "Barnes and Noble", 
+                                                            "url": "https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780385545969"
+                                                        }, 
+                                                        {
+                                                            "name": "Books-A-Million", 
+                                                            "url": "https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FA%2BTIME%2BFOR%2BMERCY%2FJohn%2BGrisham%2F9780385545969"
+                                                        }, 
+                                                        {"name": "Bookshop.org", 
+                                                        "url": "https://bookshop.org/a/3546/9780385545969"
+                                                        }
+                                                    ]
+                                                }, 
+                                                {
+                                                    "age_group": "", 
+                                                    "amazon_product_url": "https://www.amazon.com/dp/0316420255?tag=thenewyorktim-20",
+                                                     "article_chapter_link": "",
+                                                      "author": "James Patterson",
+                                                       "book_image": "https://storage.googleapis.com/du-prd/books/images/9780316420259.jpg",
+                                                        "book_image_width": 322,
+                                                        "book_image_height": 500,
+                                                        "book_review_link": "",
+                                                        "contributor": "by James Patterson",
+                                                        "contributor_note": "",
+                                                        "created_date": "2020-12-23 23:02:09", 
+                                                        "description": "The 28th book in the Alex Cross series. An investigation of a double homicide sends Alex Cross to Alabama.", "first_chapter_link": "", 
+                                                        "price": "0.00", 
+                                                        "primary_isbn10": "0316420255", 
+                                                        "primary_isbn13": "9780316420259", 
+                                                        "book_uri": "nyt://book/662286db-c00a-50de-9ba0-dec968f24b50", 
+                                                        "publisher": "Little, Brown",
+                                                         "rank": 2, 
+                                                         "rank_last_week": 3, 
+                                                         "sunday_review_link": "", 
+                                                         "title": "DEADLY CROSS", 
+                                                         "updated_date": "2020-12-23 23:02:09", 
+                                                         "weeks_on_list": 4, 
+                                                         "buy_links": 
+                                                         [{"name": "Amazon", "url": "https://www.amazon.com/dp/0316420255?tag=thenewyorktim-20"}, {"name": "Apple Books", "url": "https://goto.applebooks.apple/9780316420259?at=10lIEQ"}, {"name": "Barnes and Noble", "url": "https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780316420259"}, {"name": "Books-A-Million", "url": "https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FDEADLY%2BCROSS%2FJames%2BPatterson%2F9780316420259"}, {"name": "Bookshop.org", "url": "https://bookshop.org/a/3546/9780316420259"}]}]
