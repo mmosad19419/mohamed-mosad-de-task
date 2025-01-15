@@ -74,7 +74,7 @@ This will start all required services such as the PostgreSQL database.
 - Open your browser and go to the following address:
 
   ```
-  http://localhost/
+  http://localhost:80
   ```
 
 - Log in with the following credentials:
