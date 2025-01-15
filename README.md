@@ -177,17 +177,8 @@ Before getting started, ensure that you have the following installed:
 
 The DBT project is structured as follows:
 
-dbt_project/
-- models/ # DBT models (Bronze, Silver, Gold layers)<br>
-    bronze/ # Raw data layer (staging)
-    silver/ # Transformed data layer
-    gold/ # Business-ready data layer 
-macros/<br>
-snapshots/<br>
-analysis/<br>
-dbt_project.yml<br>
-profiles.yml <br>
-README.md<br>
+dbt_project/ ├── models/ │ ├── bronze/ │ ├── silver/ │ └── gold/ ├── macros/ ├── snapshots/ ├── analysis/ ├── dbt_project.yml ├── profiles.yml └── README.md
+
 
 
 ---
