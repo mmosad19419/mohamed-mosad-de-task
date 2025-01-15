@@ -1,4 +1,4 @@
-CREATE TABLE dwh.DimBooksBuyLinks (
+CREATE TABLE silver.books_buy_links (
   book_id varchar,
   website_name varchar,
   website_url text,

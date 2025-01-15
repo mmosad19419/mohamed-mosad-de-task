@@ -1,4 +1,4 @@
-CREATE TABLE dwh.DimLists (
+CREATE TABLE silver.lists (
   id varchar PRIMARY KEY,
   list_name varchar,
   list_name_encoded varchar,

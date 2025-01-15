@@ -5,7 +5,7 @@ WITH RECURSIVE date_series AS (
     FROM date_series
     WHERE Date < '2030-12-31'
 )
-INSERT INTO dwh.DimDate
+INSERT INTO silver.date
     (
         DateKey,
         FullDate,

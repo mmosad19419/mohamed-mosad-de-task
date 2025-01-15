@@ -1,4 +1,4 @@
-CREATE TABLE dwh.DimDate (
+CREATE TABLE silver.date (
   DateKey integer,
   FullDate date PRIMARY KEY,
   DayOfMonth varchar,

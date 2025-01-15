@@ -1,4 +1,4 @@
-CREATE TABLE dwh.DimBooks (
+CREATE TABLE silver.books (
   id varchar PRIMARY KEY,
   title varchar,
   publisher varchar,
@@ -18,6 +18,3 @@ CREATE TABLE dwh.DimBooks (
   book_uri text,
   sunday_review_link text
 );
-
-
-ALTER TABLE dwh.DimBooks ADD FOREIGN KEY (id) REFERENCES dwh.DimBooksBuyLinks (book_id);

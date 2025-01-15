@@ -12,12 +12,12 @@ services:
     ports:
       - "8888:8888"
     depends_on:
-      - postgres-dev
+      - postgres
 
   # PostgreSQL database service
-  postgres-dev:
+  postgres:
     image: postgres:13
-    container_name: postgres-dev
+    container_name: postgres
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
@@ -27,22 +27,17 @@ services:
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
 
-
-  # dbt service
-  dbt:
-    image: fishtownanalytics/dbt:1.0.0
-    container_name: dbt-core
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
     environment:
-      - DBT_PROFILES_DIR=/dbt/profiles
-      - DBT_TARGET=dev
-    volumes:
-      - ./dbt:/dbt
-      - ./dbt/profiles.yml:/dbt/profiles.yml
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "80:80"
     depends_on:
-      - postgres-dev
-    working_dir: /dbt
-    command: ["dbt", "run"]
-  
+      - postgres
+
   # Jupyter Notebook servic
   jupyter:
     image: jupyter/scipy-notebook:python-3.8
@@ -54,5 +49,5 @@ services:
       - "8889:8888"
     environment:
       - JUPYTER_ENABLE_LAB=yes
-    # depends_on:
-    #   - python
+    depends_on:
+      - python
