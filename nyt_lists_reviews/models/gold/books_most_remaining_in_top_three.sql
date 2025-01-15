@@ -3,7 +3,7 @@ WITH books_remaing_in_top_three AS (
         book_id,
         COUNT(*) AS weeks_in_top3
     FROM
-        silver.best_sellings_lists_books
+        dwh_silver.best_sellings_lists_books
     WHERE
         rank <= 3
         AND EXTRACT(YEAR FROM published_date) = 2022
@@ -18,7 +18,7 @@ SELECT
 FROM
     books_remaing_in_top_three t
 JOIN
-    silver.books b ON t.book_id = b.id
+    dwh_silver.books b ON t.book_id = b.id
 ORDER BY
     t.weeks_in_top3 DESC
 LIMIT 1

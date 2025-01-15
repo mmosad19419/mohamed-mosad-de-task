@@ -12,9 +12,9 @@ WITH books_owned AS (
             ELSE NULL
         END AS team
     FROM
-        silver.raw_best_sellings_lists_books bp
+        dwh_silver.best_sellings_lists_books bp
     JOIN
-        silver.books b ON bp.book_id = b.id
+        dwh_silver.books b ON bp.book_id = b.id
     WHERE
         EXTRACT(YEAR FROM bp.published_date) = 2023
         AND bp.rank IN (1, 3)

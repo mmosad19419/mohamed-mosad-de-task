@@ -11,13 +11,12 @@ WITH books_points AS (
             WHEN bp.rank = 5 THEN 1
             ELSE 0
         END AS points,
-        -- Generate the quarter for each book's published date
         EXTRACT(YEAR FROM bp.published_date) AS year,
         EXTRACT(QUARTER FROM bp.published_date) AS quarter
     FROM
-        silver.raw_best_sellings_lists_books bp
+        dwh_silver.best_sellings_lists_books bp
     JOIN
-        silver.books b ON bp.book_id = b.id
+        dwh_silver.books b ON bp.book_id = b.id
     WHERE
         bp.published_date BETWEEN '2021-01-01' AND '2023-12-31'
 ),

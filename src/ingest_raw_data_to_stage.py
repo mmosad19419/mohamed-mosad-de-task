@@ -14,13 +14,13 @@ OFFSET = 7
 dates = generate_incremental_dates(START_DATE, END_DATE, OFFSET)
 
 for date in dates:
-    data = read_json_file(f'./raw_data/{date}.json')
+    data = read_json_file(f'./raw_data/2022-05-29.json')
     df_lists, df_books, df_buy_links, df_best_sellers, rejected_records = transform_data(data)
     load_data(conn, cursor, df_lists, df_books, df_buy_links, df_best_sellers)\
-
-cursor.close()
-conn.close()
 
 write_rejected_records_to_file(rejected_records)
 
 validate_published_dates(cursor, START_DATE, END_DATE)
+
+cursor.close()
+conn.close()

@@ -45,7 +45,44 @@ To create virtual env and install the required libraries, use the following comm
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+
+docker compose up -d
 ```
+update the api key in the config file
+
+open the pgadmin http://localhost/
+
+email = admin@admin.com
+pass = admin123
+
+register the server
+
+host: postgres
+user:admin
+pass: admin
+port:5432
+
+execute the sql/create_stage_layer
+
+```bash
+python src/pulling_lists_reviews_data.py
+python src/ingest_raw_data_to_stage.py
+
+cd nyt_lists_reviews/
+
+pwd
+
+export DBT_PROFILES_DIR=/path/to/current/directory
+
+dbt debug
+
+dbt run --full-refresh
+```
+
+go to pgadmin and run sql/results.sql
+
+export the result in CSV
+
 
 # NYT Books API - Lists Overview Endpoint
 

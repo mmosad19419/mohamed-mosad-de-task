@@ -326,7 +326,7 @@ def load_data(conn, cursor, df_lists, df_books, df_buy_links, df_best_sellers):
 
         # Insert data into Fct_best_sellers_publish
         execute_batch(cursor, """
-            INSERT INTO stage.best_sellers_puplish (bestsellers_date, published_date, previous_published_date, next_published_date, list_id, book_id, rank, weeks_on_list, price)
+            INSERT INTO stage.best_sellings_lists_books (bestsellers_date, published_date, previous_published_date, next_published_date, list_id, book_id, rank, weeks_on_list, price)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
         """, df_best_sellers.values.tolist())
         logger.info(f"Inserted {len(df_best_sellers)} records into stage.best_sellers_puplish")
