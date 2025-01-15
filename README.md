@@ -150,15 +150,15 @@ my_project:
 
 - Run DBT in debug mode to ensure everything is configured properly:
 
-  ```bash
-  dbt debug
-  ```
+```bash
+dbt debug
+```
 
 - Run DBT to build the models and refresh the data:
 
-  ```bash
-  dbt run --full-refresh
-  ```
+```bash
+dbt run --full-refresh
+```
 
 ## 9. Generate Final Results
 
@@ -172,6 +172,10 @@ Once the results are displayed in PGAdmin, you can export them to a **CSV** file
 2. Select **Export Data**.
 3. Choose **CSV** format and specify the location to save the file.
 
+## 11- Tear down all resources
+ ```bash
+  docker compose down
+  ```
 ---
 
 ### Congratulations! 🎉
