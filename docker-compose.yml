@@ -8,16 +8,14 @@ services:
     working_dir: /workspace
     volumes:
       - .:/workspace
-    environment:
-      - PYTHONUNBUFFERED=1  # To avoid buffering of stdout/stderr [Learn]
     command: tail -f /dev/null
     ports:
       - "8888:8888"
     depends_on:
-      - postgres
+      - postgres-dev
 
   # PostgreSQL database service
-  postgres:
+  postgres-dev:
     image: postgres:13
     container_name: postgres-dev
     environment:
@@ -29,6 +27,22 @@ services:
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
 
+
+  # dbt service
+  dbt:
+    image: fishtownanalytics/dbt:1.0.0
+    container_name: dbt-core
+    environment:
+      - DBT_PROFILES_DIR=/dbt/profiles
+      - DBT_TARGET=dev
+    volumes:
+      - ./dbt:/dbt
+      - ./dbt/profiles.yml:/dbt/profiles.yml
+    depends_on:
+      - postgres-dev
+    working_dir: /dbt
+    command: ["dbt", "run"]
+  
   # Jupyter Notebook servic
   jupyter:
     image: jupyter/scipy-notebook:python-3.8
@@ -40,5 +54,5 @@ services:
       - "8889:8888"
     environment:
       - JUPYTER_ENABLE_LAB=yes
-    depends_on:
-      - python
+    # depends_on:
+    #   - python

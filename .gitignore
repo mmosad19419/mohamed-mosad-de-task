@@ -173,7 +173,7 @@ cython_debug/
 
 # dir to ignore
 raw_data
-raw_data/
-raw_data/2021-01-03.json
+rejected
 postgres-data
 notebooks
+archieve
