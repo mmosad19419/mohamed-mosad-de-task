@@ -45,6 +45,7 @@ To create virtual env and install the required libraries, use the following comm
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+```
 
 # NYT Books API - Lists Overview Endpoint
 
