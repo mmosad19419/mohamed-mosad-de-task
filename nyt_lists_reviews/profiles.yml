@@ -1,0 +1,12 @@
+nyt_lists_reviews:
+  outputs:
+    dev:
+      dbname: mydb
+      host: localhost
+      pass: admin
+      port: 5432
+      schema: nyt
+      threads: 1
+      type: postgres
+      user: admin
+  target: dev
