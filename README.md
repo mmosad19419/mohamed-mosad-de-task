@@ -366,25 +366,6 @@ dbt_project/
 
 ---
 
-## Setup Steps
-
-Follow these steps to set up the DBT project on your local machine or a different environment.
-
-### Install DBT
-
-1. **Install DBT using pip**:
-   Run the following command to install DBT globally on your system:
-
-   ```bash
-   pip install dbt
-
-
-## Adjust the above details according to your database provider.
-
-pip install -r requirements.txt
-
-dbt run --full-refresh
-
 ## Enhancements
 - Advanced UnitTesting
 - CI CD pipeline
