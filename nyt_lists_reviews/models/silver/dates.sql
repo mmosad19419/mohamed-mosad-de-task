@@ -24,4 +24,3 @@ SELECT
     TO_CHAR(Date, 'YYYY') AS Year,
     TO_CHAR(Date, 'YYYYMM') AS MonthYear
 FROM date_series
-;
