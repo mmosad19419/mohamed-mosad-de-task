@@ -28,15 +28,10 @@ python -m venv .venv
 
 Activate the virtual environment:
 
-- On macOS/Linux:
-  ```bash
-  source .venv/bin/activate
-  ```
-
-- On Windows:
-  ```bash
-  .venv\Scripts\activate
-  ```
+```bash
+source .venv/bin/activate
+.venv\Scripts\activate
+```
 
 Install the required dependencies from the `requirements.txt` file:
 
@@ -73,9 +68,9 @@ This will start all required services such as the PostgreSQL database.
 
 - Open your browser and go to the following address:
 
-  ```
-  http://localhost:80
-  ```
+```
+http://localhost:80
+```
 
 - Log in with the following credentials:
 
@@ -97,37 +92,42 @@ Once you have logged into PGAdmin, execute the `sql/create_stage_layer.sql` file
 
 ## 7. Run Data Ingestion Scripts
 
+- Run unit tests:
+```bash
+pytest
+```
+
 - Run the data pulling script to fetch data from the NYT Books API:
 
-  ```bash
-  python src/pulling_lists_reviews_data.py
-  ```
+```bash
+python src/pulling_lists_reviews_data.py
+```
 
 - Ingest the raw data into the database’s stage layer:
 
-  ```bash
-  python src/ingest_raw_data_to_stage.py
-  ```
+```bash
+python src/ingest_raw_data_to_stage.py
+```
 
 ## 8. Set Up DBT (Data Build Tool)
 
 - Navigate to the `nyt_lists_reviews/` directory:
 
-  ```bash
-  cd nyt_lists_reviews/
-  ```
+```bash
+cd nyt_lists_reviews/
+```
 
 - Print the working directory to confirm the path:
 
-  ```bash
-  pwd
-  ```
+```bash
+pwd
+```
 
 - Export the `DBT_PROFILES_DIR` environment variable, pointing to your dbt directory current directory:
 
-  ```bash
-  export DBT_PROFILES_DIR=/path/to/current/dbt/directory
-  ```
+```bash
+export DBT_PROFILES_DIR=/path/to/current/dbt/directory
+```
 
 ## `~/.dbt/profiles.yml`
 
@@ -380,3 +380,9 @@ Follow these steps to set up the DBT project on your local machine or a differen
 pip install -r requirements.txt
 
 dbt run --full-refresh
+
+## Enhancements
+- Advanced UnitTesting
+- CI CD pipeline
+- Encapsulate the process in Airflow Dag
+- Enhance Code Quality

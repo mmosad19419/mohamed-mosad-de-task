@@ -82,6 +82,8 @@ def generate_incremental_dates(start_date, end_date, offset):
     logging.info(f"Generated {len(dates)} dates.")
     return dates
 
+
+
 def fetch_data_from_api(NYT_BOOKS_API_KEY, DATE):
     """
     Fetches book data from the New York Times Books API for a specific date and 
@@ -116,6 +118,8 @@ def fetch_data_from_api(NYT_BOOKS_API_KEY, DATE):
     except requests.exceptions.RequestException as e:
         logging.error(f"Error occurred while making the API request: {e}")
         raise
+
+
 
 def init_db_connection(host, database, user, password, port):
     """
@@ -152,6 +156,8 @@ def init_db_connection(host, database, user, password, port):
     except psycopg2.OperationalError as e:
         logging.error(f"Error connecting to database: {e}")
         raise
+
+
 
 def read_json_file(file_path):
     """
@@ -298,7 +304,7 @@ def transform_data(data):
     return df_lists, df_books, df_buy_links, df_best_sellers, rejected_records
 
 
-# Function to load the transformed data into the DWH with error handling and logging
+
 def load_data(conn, cursor, df_lists, df_books, df_buy_links, df_best_sellers):
     # Create a list to track rejected records
     rejected_records = []
@@ -324,7 +330,7 @@ def load_data(conn, cursor, df_lists, df_books, df_buy_links, df_best_sellers):
         """, df_buy_links.values.tolist())
         logger.info(f"Inserted {len(df_buy_links)} records into stage.books_buy_links")
 
-        # Insert data into Fct_best_sellers_publish
+        # Insert data into best_sellings_lists_books
         execute_batch(cursor, """
             INSERT INTO stage.best_sellings_lists_books (bestsellers_date, published_date, previous_published_date, next_published_date, list_id, book_id, rank, weeks_on_list, price)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
@@ -345,6 +351,7 @@ def load_data(conn, cursor, df_lists, df_books, df_buy_links, df_best_sellers):
             logger.error(f"Rejected records: {rejected_records}")
         else:
             logger.info("No rejected records.")
+
 
 
 def write_rejected_records_to_file(rejected_data, file_path="rejected_records.csv"):
@@ -374,6 +381,7 @@ def write_rejected_records_to_file(rejected_data, file_path="rejected_records.cs
     except Exception as e:
         logging.error(f"Error writing rejected records: {e}")
         raise
+
 
 
 def validate_published_dates(cursor, expected_min_date, expected_max_date):
