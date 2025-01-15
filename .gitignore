@@ -169,3 +169,11 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+
+# dir to ignore
+raw_data
+raw_data/
+raw_data/2021-01-03.json
+postgres-data
+notebooks

@@ -1,21 +1,19 @@
 import requests
 import pandas as pd
 from datetime import datetime
-import psycopg2
-from psycopg2.extras import execute_batch
+import psycopg
+# from psycopg2.extras import execute_batch
 
-
-# Transform function to convert the raw data into a DataFrame for each table
 
 def transform_data(data):
-    # Extract relevant details from the raw JSON
+    # init lists to store each table data
     lists_data = []
     books_data = []
     buy_links_data = []
     fact_best_sellers_data = []
     date_data = []
 
-    # Step 1: Transform DimLists
+    # DimLists
     for list_entry in data['results']['lists']:
         list_dict = {
             'id': list_entry['list_id'],
@@ -29,7 +27,7 @@ def transform_data(data):
         }
         lists_data.append(list_dict)
 
-        # Step 2: Transform DimBooks and DimBooksBuyLinks
+        # DimBooks
         for book in list_entry['books']:
             book_id = book['primary_isbn13']
             book_dict = {
@@ -54,7 +52,7 @@ def transform_data(data):
             }
             books_data.append(book_dict)
 
-            # Step 3: DimBooksBuyLinks
+            # DimBooksBuyLinks
             for buy_link in book['buy_links']:
                 buy_link_dict = {
                     'book_id': book_id,
@@ -63,7 +61,7 @@ def transform_data(data):
                 }
                 buy_links_data.append(buy_link_dict)
 
-            # Step 4: Fct_best_sellers_publish
+            # Fct_best_sellers_publish
             fct_best_seller_dict = {
                 'bestsellers_date': datetime.strptime(data['results']['bestsellers_date'], "%Y-%m-%d").date(),
                 'published_date': datetime.strptime(book['published_date'], "%Y-%m-%d").date(),
@@ -73,48 +71,22 @@ def transform_data(data):
                 'book_id': book_id,
                 'rank': book['rank'],
                 'weeks_on_list': book['weeks_on_list'],
-                'price': 0  # Assuming price is 0 as per the example
+                'price': book['price']
             }
             fact_best_sellers_data.append(fct_best_seller_dict)
 
-        # Step 5: DimDate (dates related to published_date)
-        date_dict = {
-            'DateKey': int(book['published_date'].replace('-', '')),
-            'FullDate': book['published_date'],
-            'DayOfMonth': datetime.strptime(book['published_date'], "%Y-%m-%d").strftime('%d'),
-            'DayName': datetime.strptime(book['published_date'], "%Y-%m-%d").strftime('%A'),
-            'DayOfWeek': str(datetime.strptime(book['published_date'], "%Y-%m-%d").weekday() + 1),
-            'DayOfYear': str(datetime.strptime(book['published_date'], "%Y-%m-%d").timetuple().tm_yday),
-            'WeekOfYear': str(datetime.strptime(book['published_date'], "%Y-%m-%d").isocalendar()[1]),
-            'Month': datetime.strptime(book['published_date'], "%Y-%m-%d").strftime('%m'),
-            'MonthName': datetime.strptime(book['published_date'], "%Y-%m-%d").strftime('%B'),
-            'Quarter': str((datetime.strptime(book['published_date'], "%Y-%m-%d").month - 1) // 3 + 1),
-            'Year': datetime.strptime(book['published_date'], "%Y-%m-%d").strftime('%Y'),
-            'MonthYear': datetime.strptime(book['published_date'], "%Y-%m-%d").strftime('%Y%m')
-        }
-        date_data.append(date_dict)
 
     # Convert to DataFrames
     df_lists = pd.DataFrame(lists_data)
     df_books = pd.DataFrame(books_data)
     df_buy_links = pd.DataFrame(buy_links_data)
     df_best_sellers = pd.DataFrame(fact_best_sellers_data)
-    df_dates = pd.DataFrame(date_data)
 
     return df_lists, df_books, df_buy_links, df_best_sellers, df_dates
 
 
 # Function to load the transformed data into the DWH
 def load_data(df_lists, df_books, df_buy_links, df_best_sellers, df_dates):
-    # Connect to PostgreSQL (replace with your own connection details)
-    conn = psycopg2.connect(
-        host="your_host",
-        database="your_db",
-        user="your_user",
-        password="your_password"
-    )
-    cursor = conn.cursor()
-
     # Insert data into DimLists
     execute_batch(cursor, """
         INSERT INTO DimLists (id, list_name, list_name_encoded, display_name, updated, list_image, list_image_width, list_image_height)
@@ -151,7 +123,6 @@ def load_data(df_lists, df_books, df_buy_links, df_best_sellers, df_dates):
     conn.close()
 
 # ETL Pipeline
-data = fetch_data()
-if data:
-    df_lists, df_books, df_buy_links, df_best_sellers, df_dates = transform_data(data)
-    load_data(df_lists, df_books, df_buy_links, df_best_sellers, df_dates)
+if __name__ == '__main__':
+        df_lists, df_books, df_buy_links, df_best_sellers, df_dates = transform_data(data)
+        load_data(df_lists, df_books, df_buy_links, df_best_sellers, df_dates)

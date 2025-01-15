@@ -2,8 +2,9 @@
 import os
 from datetime import datetime, timedelta
 import itertools
-import jsons
+import json
 import requests
+import psycopg
 
 
 # Parsing the configration file
@@ -18,7 +19,7 @@ def parse_configs(config_file_path):
         tuple: A tuple containing the API key, API secret, and API endpoint.
     """
 
-    with open('./config.json') as config_file:
+    with open(config_file_path) as config_file:
         configs = json.load(config_file)
 
     # retrieve API credientials
@@ -81,11 +82,25 @@ def fetch_data_from_api(NYT_BOOKS_API_KEY, DATE):
     URL = f"https://api.nytimes.com/svc/books/v3/lists/overview.json?published_date={DATE}&api-key={NYT_BOOKS_API_KEY}"
     response = requests.get(URL)
 
-    if response.status == "OK":
+    if response.status_code == 200:
         # Save the data to a JSON file in the raw_data folder
         os.makedirs("./raw_data", exist_ok=True)
 
         with open(f"./raw_data/{DATE}.json", "w") as raw_file:
             json.dump(response.json(), raw_file)
+    else:
+        raise Exception(f"Failed to fetch data from API. Status code: {response.status_code}")
 
-       
+# Create a conn to database
+def init_db_connection(host, database, user, password, port):
+    # Connect to database
+    conn = psycopg.connect(
+        host=host,
+        dbname=database,
+        user=user,
+        password=password,
+        port=port
+    )
+    cursor = conn.cursor()
+    
+    return cursor

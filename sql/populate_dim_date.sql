@@ -1,7 +1,7 @@
 WITH RECURSIVE date_series AS (
     SELECT '2010-01-01'::DATE AS Date
     UNION ALL
-    SELECT Date + INTERVAL '1 day'
+    SELECT (Date + INTERVAL '1 day')::DATE as Date
     FROM date_series
     WHERE Date < '2030-12-31'
 )
@@ -17,13 +17,12 @@ INSERT INTO dwh.DimDate
         Month,
         MonthName,
         Quarter,
-        QuarterName,
         Year,
         MonthYear
     )
 SELECT 
     EXTRACT(YEAR FROM Date) * 10000 + EXTRACT(MONTH FROM Date) * 100 + EXTRACT(DAY FROM Date) AS DateKey,
-    TO_CHAR(Date, 'dd-MM-yyyy') AS FullDate,
+    Date AS FullDate,
     TO_CHAR(Date, 'DD') AS DayOfMonth,
     TO_CHAR(Date, 'FMDay') AS DayName,
     EXTRACT(DOW FROM Date) + 1 AS DayOfWeek,  -- Day of the week starting from Sunday = 1

@@ -7,5 +7,3 @@ import requests
 
 from utils.helper_functions import get_lists_data
 
-
-

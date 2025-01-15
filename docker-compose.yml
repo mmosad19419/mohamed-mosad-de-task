@@ -14,7 +14,7 @@ services:
     ports:
       - "8888:8888"
     depends_on:
-      - postgres # Ensure Postgres database service is ready before starting Python
+      - postgres
 
   # PostgreSQL database service
   postgres:
@@ -27,7 +27,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - ./postgres-data:/var/lib/postgresql/data
 
   # Jupyter Notebook servic
   jupyter:
@@ -41,9 +41,4 @@ services:
     environment:
       - JUPYTER_ENABLE_LAB=yes
     depends_on:
-      - python  # Ensure Python is ready before starting Jupyter
-
-# Volumes for persistent data
-volumes: #[Learn]
-  postgres-data:
-    driver: local
+      - python
