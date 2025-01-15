@@ -1,0 +1,1 @@
+select * from {{ source('stage', 'best_sellings_lists_books') }}
