@@ -118,11 +118,10 @@ GET https://api.nytimes.com/svc/books/v3/lists/overview.json?published_date=2023
 ### Objective:
 You will be working with the New York Times Books API, particularly the [lists overview endpoint](https://developer.nytimes.com/docs/books-product/1/routes/lists/overview.json/get). In case of any questions with the API, check out their [FAQ](https://developer.nytimes.com/faq).
 
-### API Details:
 
+## Dimensional Data Model
 To understand the relationships between the various entities in the database, here's an Entity Relationship Diagram (ERD):
 
-![ERD]('https://dbdiagram.io/d/678694f06b7fa355c3dd4fda')
 ![Dimensional Model](https://github.com/user-attachments/assets/36b49206-377a-477d-b0cc-583eff90da2e)
 
 
