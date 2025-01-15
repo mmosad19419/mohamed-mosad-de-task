@@ -172,6 +172,7 @@ cython_debug/
 
 
 # dir to ignore
+logs
 raw_data
 rejected
 postgres-data
