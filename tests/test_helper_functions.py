@@ -13,8 +13,8 @@ def test_generate_incremental_dates_with_large_offset():
     end_date = "2023-01-10"
     offset = 7
     expected_dates = [
-        datetime(2023, 1, 1),
-        datetime(2023, 1, 8)
+        datetime(2023, 1, 1).date(),
+        datetime(2023, 1, 8).date()
     ]
     dates = generate_incremental_dates(start_date, end_date, offset)
     assert dates == expected_dates
