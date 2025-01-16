@@ -371,3 +371,4 @@ dbt_project/
 - CI CD pipeline
 - Encapsulate the process in Airflow Dag
 - Enhance Code Quality
+- Enhance the Dimensional Model handling SCD
