@@ -6,16 +6,20 @@
 
 This project analyzes the New York Times (NYT) Best Sellers data to determine which book stayed in the top 3 ranks for the longest time in 2022. The dataset is fetched from the NYT Books API and then processed to extract key insights, including identifying the book with the longest duration in the top 3 positions. Additionally, the project handles the rejection of invalid records and writes these rejected records to a specific directory for further review.
 
+### Objective:
+You will be working with the New York Times Books API, particularly the [lists overview endpoint](https://developer.nytimes.com/docs/books-product/1/routes/lists/overview.json/get). In case of any questions with the API, check out their [FAQ](https://developer.nytimes.com/faq).
+
+
 ## Questions to Answer
-● Which book remained in the top 3 ranks for the longest time in 2022.<br>
-● Which are the top 3 lists to have the least number of unique books in their
+- Which book remained in the top 3 ranks for the longest time in 2022.<br>
+- Which are the top 3 lists to have the least number of unique books in their
     rankings for the entirety of the data<br>
-● Publishers are ranked based on how their respective books performed on this
+- Publishers are ranked based on how their respective books performed on this
     list. For each book, a publisher gets points based on the best rank a book got in a
 given period of time. The publisher gets 5 points if the book is ranked 1st, 4 for
 2nd rank, 3 for 3rd rank, 2 for 4th and 1 point for 5th. Create a quarterly rank for
 publishers from 2021 to 2023, getting only the top 5 for each quarter.<br>
-● Two friends Jake and Pete have podcasts where they review books. Jake's team
+- Two friends Jake and Pete have podcasts where they review books. Jake's team
 reviews the book ranked first on every list, while Pete’s team reviews the book
 ranked third. Both of them share books, if Jake’s team wants to review a book,
 they first check with Pete’s before buying and vice versa. Which team bought
@@ -105,24 +109,10 @@ GET https://api.nytimes.com/svc/books/v3/lists/overview.json?published_date=2023
 }
 ```
 
-
-### Objective:
-You will be working with the New York Times Books API, particularly the [lists overview endpoint](https://developer.nytimes.com/docs/books-product/1/routes/lists/overview.json/get). In case of any questions with the API, check out their [FAQ](https://developer.nytimes.com/faq).
-
-
 ## Dimensional Data Model
 To understand the relationships between the various entities in the database, here's an Entity Relationship Diagram (ERD):
 
 ![Dimensional Model](https://github.com/user-attachments/assets/36b49206-377a-477d-b0cc-583eff90da2e)
-
-
-# Enhancements
-- Add uniquly generated key for each table
-- More unit tests
-- Data quality checks
-- Data validation checks when inserting the data to staging tables
-- CI / CD pipleine
-- Better Documentation
 
 
 # DBT Project: Best Seller Book Lists
@@ -130,27 +120,6 @@ To understand the relationships between the various entities in the database, he
 This repository contains a DBT (Data Build Tool) project that processes and transforms raw data about best-seller books, including book details, sales rankings, and metadata, into meaningful insights.
 
 The project includes models that ingest raw data (Bronze layer), transform the data (Silver layer), and prepare it for business consumption (Gold layer).
-
----
-
-## Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Project Structure](#project-structure)
-- [Setup Steps](#setup-steps)
-  - [Install DBT](#install-dbt)
-  - [Configure DBT Profile](#configure-dbt-profile)
-  - [Install Dependencies](#install-dependencies)
-- [DBT Environment Setup](#dbt-environment-setup)
-  - [Setting up DBT for Different Environments](#setting-up-dbt-for-different-environments)
-  - [Switching Between Environments](#switching-between-environments)
-- [Running the Project](#running-the-project)
-  - [Running All Models](#running-all-models)
-  - [Running a Specific Model](#running-a-specific-model)
-  - [Using `--full-refresh`](#using-full-refresh)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -384,8 +353,12 @@ You have successfully completed the process of setting up, running, and exportin
 
 
 ## Enhancements
-- Advanced UnitTesting
 - CI CD pipeline
 - Encapsulate the process in Airflow Dag
 - Enhance Code Quality
+- More unit tests
+- More Data quality checks
+- Data validation checks when inserting the data to staging tables
 - Enhance the Dimensional Model handling SCD
+- Add uniquly generated key for each table
+- Better Documentation
