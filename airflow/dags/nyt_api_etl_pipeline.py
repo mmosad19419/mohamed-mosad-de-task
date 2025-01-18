@@ -37,7 +37,7 @@ def fetch_data_function():
             raise
 
 # Task 2: Process Data
-def process_data_function(date):
+def process_data_function():
     # Generate the list of dates for incremental loading
     dates = generate_incremental_dates(START_DATE, END_DATE, OFFSET)
 

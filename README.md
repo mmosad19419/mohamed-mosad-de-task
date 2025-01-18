@@ -228,12 +228,12 @@ Once you have logged into PGAdmin, execute the `sql/create_stage_layer.sql` file
 ## 7. Run Data Ingestion Scripts
 - Move to airflow directory:
 ```bash
-cd airflow-dbt
+cd airflow
 ```
+- Setup AIRFLOW_HOME directory
 
-- Install astrounmer:
 ```bash
-brew install astro
+export DBT_PROFILES_DIR=$(pwd)
 ```
 
 - Run unit tests:
@@ -241,14 +241,15 @@ brew install astro
 pytest
 ```
 
-- Start Astronomer Airflow:
+- run airflow:
 ```bash
-astro dev start
+airflow standalone
 ```
+
 ###  Run the data pulling script to fetch data from the NYT Books API:
 1. Using Airflow Dag
 - go to the `http://localhost:8080/`
-- sign in with user: admin, passward: admin
+- sign in with user: admin, passward provided in `standalone_admin_password.txt` file
 - trigger the `nyt_books_etl_pipeline` dag
 
 2. Manually
