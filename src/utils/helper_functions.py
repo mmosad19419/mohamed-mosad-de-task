@@ -401,7 +401,7 @@ def validate_published_dates(cursor, expected_min_date, expected_max_date):
         # Execute the SQL query to fetch min and max published_date
         cursor.execute("""
             SELECT MIN(published_date), MAX(published_date)
-            FROM stage.best_sellers_puplish
+            FROM stage.best_sellings_lists_books
         """)
         
         # Fetch the result
