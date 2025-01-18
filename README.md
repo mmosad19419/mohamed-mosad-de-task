@@ -133,25 +133,6 @@ Before getting started, ensure that you have the following installed:
 
 ---
 
-## Project Structure
-
-The DBT project is structured as follows:
-
-dbt_project/
-├── models/                    # Contains the DBT models for different stages of data processing
-│   ├── bronze/                # Raw or staging models
-│   ├── silver/                # Cleaned and transformed models
-│   └── gold/                  # Aggregated or final reporting models
-├── macros/                    # Custom DBT macros (reusable functions)
-├── snapshots/                 # DBT snapshots for handling slowly changing dimensions (SCD)
-├── analysis/                  # Folder for DBT analysis scripts
-├── dbt_project.yml            # Main configuration file for the DBT project
-├── profiles.yml               # DBT profiles file (contains database connection configurations)
-└── README.md                  # Project documentation file
-
----
-
-
 
 ### Explanation of Steps:
 
