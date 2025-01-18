@@ -23,7 +23,7 @@ services:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_DB=mydb
     ports:
-      - "5432:5432"
+      - "5431:5432" # change port 5431 to allow astro postgres to listen on 5432
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
 
