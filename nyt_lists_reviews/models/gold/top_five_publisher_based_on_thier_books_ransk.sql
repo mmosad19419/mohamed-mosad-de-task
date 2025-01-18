@@ -14,9 +14,9 @@ WITH books_points AS (
         EXTRACT(YEAR FROM bp.published_date) AS year,
         EXTRACT(QUARTER FROM bp.published_date) AS quarter
     FROM
-        dwh_silver.best_sellings_lists_books bp
+       {{ ref('best_sellings_lists_books') }} bp
     JOIN
-        dwh_silver.books b ON bp.book_id = b.id
+        {{ ref('books') }} b ON bp.book_id = b.id
     WHERE
         bp.published_date BETWEEN '2021-01-01' AND '2023-12-31'
 ),

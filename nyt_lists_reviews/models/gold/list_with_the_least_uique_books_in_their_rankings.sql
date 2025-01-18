@@ -3,7 +3,7 @@ WITH lists_books_count AS (
         list_id,
         COUNT(DISTINCT book_id) AS unique_books_count
     FROM
-        dwh_silver.best_sellings_lists_books
+       {{ ref('best_sellings_lists_books') }}
     GROUP BY
         list_id
 )

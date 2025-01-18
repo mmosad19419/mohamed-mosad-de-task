@@ -3,7 +3,7 @@ WITH books_remaing_in_top_three AS (
         book_id,
         COUNT(*) AS weeks_in_top3
     FROM
-        dwh_silver.best_sellings_lists_books
+       {{ ref('best_sellings_lists_books') }}
     WHERE
         rank <= 3
         AND EXTRACT(YEAR FROM published_date) = 2022
