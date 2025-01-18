@@ -241,7 +241,11 @@ brew install astro
 pytest
 ```
 
-- Run the data pulling script to fetch data from the NYT Books API:
+- Start Astronomer Airflow:
+```bash
+astro dev start
+```
+###  Run the data pulling script to fetch data from the NYT Books API:
 1. Using Airflow Dag
 - go to the `http://localhost:8080/`
 - sign in with user: admin, passward: admin
