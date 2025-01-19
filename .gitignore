@@ -178,3 +178,7 @@ rejected
 postgres-data
 notebooks
 archieve
+
+# file to ignore
+airflow.db
+airflow-webserver.pid

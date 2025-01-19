@@ -9,7 +9,7 @@ from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
 
 # Import helper functions
-from plugins.helper_functions import parse_configs, generate_incremental_dates, fetch_data_from_api, \
+from helper_functions import parse_configs, generate_incremental_dates, fetch_data_from_api, \
     init_db_connection, read_json_file, transform_data, load_data, write_rejected_records_to_file, \
     validate_published_dates
 

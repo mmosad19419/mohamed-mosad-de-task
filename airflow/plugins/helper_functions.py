@@ -1,14 +1,15 @@
 # imports
 import logging
+import sys
 import os
 from datetime import datetime, timedelta
-import itertools
 import json
 import requests
 import psycopg2
 from psycopg2.extras import execute_batch
 import pandas as pd
 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'plugins')))
 
 # Setup logger
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

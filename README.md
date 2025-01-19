@@ -233,7 +233,7 @@ cd airflow
 - Setup AIRFLOW_HOME directory
 
 ```bash
-export DBT_PROFILES_DIR=$(pwd)
+export AIRFLOW_HOME=$(pwd)
 ```
 
 - Run unit tests:
