@@ -238,7 +238,7 @@ export DBT_PROFILES_DIR=$(pwd)
 
 - Run unit tests:
 ```bash
-pytest
+pytest ./tests
 ```
 
 - run airflow:

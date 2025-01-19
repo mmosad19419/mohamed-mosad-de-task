@@ -1,11 +1,12 @@
 import logging
 from datetime import datetime, timedelta
 import time
+import sys
+import os
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
-from airflow.providers.postgres.hooks.postgres import PostgresHook
 
 # Import helper functions
 from plugins.helper_functions import parse_configs, generate_incremental_dates, fetch_data_from_api, \

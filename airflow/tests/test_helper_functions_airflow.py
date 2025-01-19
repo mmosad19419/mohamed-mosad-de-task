@@ -5,7 +5,7 @@ from datetime import datetime
 import requests
 from unittest.mock import patch, MagicMock
 
-from src.utils.helper_functions import parse_configs, generate_incremental_dates, fetch_data_from_api
+from plugins.helper_functions import parse_configs, generate_incremental_dates, fetch_data_from_api
 
 # Unit test generate_incremental_dates
 def test_generate_incremental_dates_with_large_offset():
