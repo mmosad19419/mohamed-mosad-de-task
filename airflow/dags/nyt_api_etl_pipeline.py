@@ -6,6 +6,7 @@ import os
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
+from airflow.operators.bash import BashOperator
 from airflow.utils.dates import days_ago
 
 # Import helper functions
@@ -115,6 +116,10 @@ with DAG(
         python_callable=validate_data_task
     )
 
+    dbt_run_task = BashOperator(
+        task_id = 'run_dbt_build_cmd',
+        bash_command='cd ../nyt_lists_reviews && dbt build --full-refresh'
+    )
+
     # Set up tasks dependiencies
-    fetch_data >> process_data
-    process_data >> validate_data
+    fetch_data >> process_data >> validate_data >> dbt_run_task
