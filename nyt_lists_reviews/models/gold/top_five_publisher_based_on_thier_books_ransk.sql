@@ -1,3 +1,11 @@
+{{
+    config(
+        materialization='view',
+        schema='gold',
+        tags=['sql_question_3', 'gold_layer'],
+    )
+}}
+
 WITH books_points AS (
     SELECT
         b.id,

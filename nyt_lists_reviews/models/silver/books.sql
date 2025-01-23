@@ -1,4 +1,13 @@
 -- models/silver/books.sql
+{{
+    config(
+        materialization='incremental',
+        incremental_strategy='insert_overwrite',
+        loaded_at_field='loaded_at',
+        schema='silver',
+        tags='silver_layer',
+    )
+}}
 
 with raw_books as (
     select
@@ -45,3 +54,9 @@ select
     sunday_review_link
 from raw_books
 where rn = 1
+
+{% if is_incremental() %}
+
+where updated_date > (select coalesce(max(updated_date), '1900-01-01') from {{ this }}) 
+
+{% endif %}

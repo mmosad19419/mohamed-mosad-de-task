@@ -1,3 +1,12 @@
+{{
+    config(
+        materialization='view',
+        schema='gold',
+        unique_key=['id'],
+        tags=['sql_question_2', 'gold_layer'],
+    )
+}}
+
 WITH lists_books_count AS (
     SELECT
         list_id,
@@ -14,7 +23,7 @@ SELECT
 FROM
     lists_books_count lb
 JOIN
-    dwh_silver.lists l ON lb.list_id = l.id
+    {{ref('lists')}} l ON lb.list_id = l.id
 ORDER BY
     lb.unique_books_count ASC
 LIMIT 3

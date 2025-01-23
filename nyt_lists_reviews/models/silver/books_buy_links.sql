@@ -1,4 +1,14 @@
 -- models/silver/books_buy_links.sql
+{{
+    config(
+        materialization='incremental',
+        incremental_strategy='insert_overwrite',
+        unique_key=['book_id', 'website_name'],
+        schema='silver',
+        tags='silver_layer',
+        loaded_at_field='loaded_at',
+    )
+}}
 
 with raw_books_buy_links as (
     select

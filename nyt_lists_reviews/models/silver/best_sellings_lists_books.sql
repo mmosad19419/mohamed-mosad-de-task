@@ -1,5 +1,15 @@
 -- models/silver/best_sellings_lists_books.sql
 
+{{
+    config(
+        materialization="incremental",
+        incremental_strategy="insert_overwrite",
+        schema='silver',
+        tags='silver_layer',
+        loaded_at_field='loaded_at',
+    )
+}}
+
 with raw_best_sellers as (
     select
         row_number() over () id,
@@ -27,3 +37,9 @@ select
     weeks_on_list,
     price
 from raw_best_sellers
+
+{% if is_incremental() %}
+
+where published_date > (select coalesce(max(published_date), '1900-01-01') from {{ this }})
+
+{% endif %}

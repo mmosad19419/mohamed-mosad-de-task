@@ -11,6 +11,9 @@ sources:
         columns:
           - name: id
             description: "Unique identifier for the list"
+            tests:
+              # - uniques
+              - not_null
           - name: list_name
             description: "Name of the list"
           - name: list_name_encoded
@@ -19,22 +22,37 @@ sources:
             description: "Display name of the list"
           - name: updated
             description: "Last updated date of the list"
+            meta:
+              type: datetime
           - name: list_image
             description: "Image associated with the list"
           - name: list_image_width
             description: "Width of the list image"
           - name: list_image_height
             description: "Height of the list image"
+
+        # loaded_at_filed: updated
+        # freshness:
+        #   warn_after: {count: 500, period: day}
+        #   error_after: {count: 800, period: day}
+        #   # filter: datediff('day', updated, current_date)
       
       - name: best_sellings_lists_books
         description: "Information about best-selling books"
         columns:
           - name: id
             description: "Unique identifier for the best-seller record"
+            #tests:
+              # - unique
+              #- not_null
           - name: bestsellers_date
             description: "Date when the list of best-sellers was published"
+            tests:
+              - not_null
           - name: published_date
             description: "Actual publication date of the book"
+            meta:
+              type: datetime
           - name: previous_published_date
             description: "Previous publication date of the book"
           - name: next_published_date
@@ -50,11 +68,20 @@ sources:
           - name: price
             description: "Price of the book"
 
+        # loaded_at_field: published_date
+        # freshness:
+        #   warn_after: {count: 500, period: day}
+        #   error_after: {count: 800, period: day}
+        
+
       - name: books
         description: "Details about the books"
         columns:
           - name: id
             description: "Unique identifier for the book"
+            tests:
+              #- unique
+              - not_null
           - name: title
             description: "Title of the book"
           - name: publisher
@@ -71,6 +98,8 @@ sources:
             description: "Date the book was created"
           - name: updated_date
             description: "Date the book details were last updated"
+            meta:
+              type: datetime
           - name: age_group
             description: "Age group for which the book is intended"
           - name: amazon_product_url
@@ -90,11 +119,19 @@ sources:
           - name: sunday_review_link
             description: "Link to the Sunday review of the book"
 
+        # loaded_at_field: updated_date
+        # freshness:
+        #   warn_after: {count: 500, period: day}
+        #   error_after: {count: 800, period: day}
+
       - name: books_buy_links
         description: "Buy links for the books"
         columns:
           - name: book_id
             description: "ID of the book"
+            tests:
+              # - unique
+              - not_null
           - name: website_name
             description: "Name of the website selling the book"
           - name: website_url

@@ -1,3 +1,12 @@
+{{
+    config(
+        materialization='view',
+        schema='gold',
+        unique_key=['book_id', 'list_id', 'team'],
+        tags=['sql_question_4', 'gold_layer'],
+    )
+}}
+
 WITH books_owned AS (
     SELECT
         bp.book_id,

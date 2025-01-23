@@ -1,3 +1,12 @@
+{{
+    config(
+        materialization='view',
+        schema='gold',
+        unique_key=['book_id'],
+        tags=['sql_question_01', 'gold_layer'],
+    )
+}}
+
 WITH books_remaing_in_top_three AS (
     SELECT
         book_id,
@@ -18,7 +27,7 @@ SELECT
 FROM
     books_remaing_in_top_three t
 JOIN
-    dwh_silver.books b ON t.book_id = b.id
+    {{ref('books')}} b ON t.book_id = b.id
 ORDER BY
     t.weeks_in_top3 DESC
 LIMIT 1
