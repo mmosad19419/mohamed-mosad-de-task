@@ -5,6 +5,12 @@ models:
     schema: gold
   - name: books_most_remaining_in_top_three
     schema: gold
+    columns:
+      - name: book_id
+        description: "unique identifier for books"
+        tests:
+          - not_null
+          - unique
   - name: list_with_the_least_uique_books_in_their_rankings
     schema: gold
   - name: top_five_publisher_based_on_thier_books_ransk
